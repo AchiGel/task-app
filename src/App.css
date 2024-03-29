@@ -78,10 +78,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .modal-task-input {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-task-input input {
+  padding: 15px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid grey;
 }
 
 .modal-task-priority {
@@ -91,5 +102,23 @@ body {
 .task-priority-buttons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 15px;
+}
+
+.task-priority-buttons button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: green;
+}
+
+.modal-add-task {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(53, 114, 53);
 }

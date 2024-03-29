@@ -1,9 +1,15 @@
 function Modal({
   closeModal,
   modalType,
+  taskText,
+  handleTaskText,
+  getTaskProps,
 }: {
   closeModal: Function;
   modalType: string;
+  taskText: string;
+  handleTaskText: Function;
+  getTaskProps: Function;
 }) {
   if (modalType === "addModal") {
     return (
@@ -15,7 +21,13 @@ function Modal({
           </div>
           <div className="modal-task-input">
             <label htmlFor="task">Task</label>
-            <input id="task" type="text" placeholder="Type your task here..." />
+            <input
+              id="task"
+              type="text"
+              placeholder="Type your task here..."
+              value={taskText}
+              onChange={(e) => handleTaskText(e)}
+            />
           </div>
           <div className="modal-task-priority">
             <span>Priority</span>
@@ -25,7 +37,15 @@ function Modal({
               <button>Low</button>
             </div>
           </div>
-          <button className="modal-add-task">Add</button>
+          <button
+            className="modal-add-task"
+            onClick={() => {
+              getTaskProps();
+              closeModal();
+            }}
+          >
+            Add
+          </button>
         </div>
       </div>
     );
