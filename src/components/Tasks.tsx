@@ -5,6 +5,15 @@ function Tasks({
   openModal: Function;
   taskProps: any;
 }) {
+  function fontColor(task: any) {
+    if (task.priority === "High") {
+      return "high-proproty-color";
+    } else if (task.priority === "Medium") {
+      return "medium-proproty-color";
+    }
+    return "low-proproty-color";
+  }
+
   return (
     <ul className="tasks">
       {taskProps.map(
@@ -16,19 +25,18 @@ function Tasks({
             </div>
             <div className="task-priority">
               <span>Priority</span>
-              <h3>{task.priority}</h3>
+              <h3 className={fontColor(task)}>{task.priority}</h3>
             </div>
             <button className="task-progress">To do</button>
             <div className="task-progress-circle">O</div>
-            <button className="task-edit" onClick={(event) => openModal(event)}>
-              Edit
-            </button>
+            <button
+              className="task-edit"
+              onClick={(event) => openModal(event)}
+            ></button>
             <button
               className="task-delete"
               onClick={(event) => openModal(event)}
-            >
-              X
-            </button>
+            ></button>
           </li>
         )
       )}

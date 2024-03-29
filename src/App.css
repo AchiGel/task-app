@@ -53,6 +53,35 @@ body {
   justify-content: space-between;
 }
 
+.task-card span {
+  font-size: 14px;
+  color: #91929e;
+  font-weight: 400;
+  margin-bottom: 7px;
+}
+
+.task-name h3 {
+  color: #0a1629;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.task-priority h3 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.high-proproty-color {
+  color: red;
+}
+.medium-proproty-color {
+  color: yellow;
+}
+.low-proproty-color {
+  color: green;
+}
+
 .modal-overlay {
   position: absolute;
   top: 0;
@@ -153,4 +182,30 @@ body {
   outline: none;
   cursor: pointer;
   background-color: rgb(53, 114, 53);
+}
+
+.task-delete {
+  background-image: url(../src/assets/recycle-bin.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.task-edit {
+  background-image: url(./assets/edit.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
 }
