@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       {modalShow ? <Modal closeModal={closeModal} /> : null}
       <Header openModal={openModal} />
-      <Tasks />
+      <Tasks openModal={openModal} />
     </div>
   );
 }
