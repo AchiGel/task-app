@@ -12,10 +12,10 @@ function Tasks({ openModal }: { openModal: Function }) {
         </div>
         <button className="task-progress">To do</button>
         <div className="task-progress-circle">O</div>
-        <button className="task-edit" onClick={() => openModal()}>
+        <button className="task-edit" onClick={(event) => openModal(event)}>
           Edit
         </button>
-        <button className="task-delete" onClick={() => openModal()}>
+        <button className="task-delete" onClick={(event) => openModal(event)}>
           X
         </button>
       </li>

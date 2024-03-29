@@ -73,3 +73,23 @@ body {
   padding: 40px 60px;
   width: 40%;
 }
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-task-input {
+  margin-bottom: 20px;
+}
+
+.modal-task-priority {
+  margin-bottom: 20px;
+}
+
+.task-priority-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
