@@ -33,7 +33,7 @@ function Modal({
         <div className="modal">
           <div className="modal-header">
             <h2>Add Task</h2>
-            <button onClick={() => closeModal()}>X</button>
+            <button onClick={() => closeModal()}></button>
           </div>
           <div className="modal-task-input">
             <label htmlFor="task">Task</label>
