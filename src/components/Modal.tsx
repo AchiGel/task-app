@@ -1,16 +1,32 @@
+import { useState } from "react";
+
 function Modal({
   closeModal,
   modalType,
   taskText,
   handleTaskText,
   getTaskProps,
+  handlePrioritySelect,
 }: {
   closeModal: Function;
   modalType: string;
   taskText: string;
   handleTaskText: Function;
   getTaskProps: Function;
+  handlePrioritySelect: Function;
 }) {
+  const [selected, setSelected] = useState("");
+
+  function handleSelect(e: any) {
+    if (e.currentTarget.textContent === "High") {
+      setSelected("high");
+    } else if (e.currentTarget.textContent === "Medium") {
+      setSelected("medium");
+    } else {
+      setSelected("low");
+    }
+  }
+
   if (modalType === "addModal") {
     return (
       <div className="modal-overlay">
@@ -32,9 +48,33 @@ function Modal({
           <div className="modal-task-priority">
             <span>Priority</span>
             <div className="task-priority-buttons">
-              <button>High</button>
-              <button>Medium</button>
-              <button>Low</button>
+              <button
+                onClick={(e) => {
+                  handleSelect(e);
+                  handlePrioritySelect(e);
+                }}
+                className={selected === "high" ? "high-selected" : "high"}
+              >
+                High
+              </button>
+              <button
+                onClick={(e) => {
+                  handleSelect(e);
+                  handlePrioritySelect(e);
+                }}
+                className={selected === "medium" ? "medium-selected" : "medium"}
+              >
+                Medium
+              </button>
+              <button
+                onClick={(e) => {
+                  handleSelect(e);
+                  handlePrioritySelect(e);
+                }}
+                className={selected === "low" ? "low-selected" : "low"}
+              >
+                Low
+              </button>
             </div>
           </div>
           <button

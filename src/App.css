@@ -111,6 +111,38 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.task-priority-buttons .high {
+  border: 1px solid red;
+  color: red;
+}
+
+.task-priority-buttons .high-selected {
+  border: none;
+  color: white;
+  background-color: red;
+}
+
+.task-priority-buttons .medium {
+  border: 1px solid yellow;
+  color: yellow;
+}
+
+.task-priority-buttons .medium-selected {
+  border: none;
+  color: white;
+  background-color: yellow;
+}
+
+.task-priority-buttons .low {
+  border: 1px solid green;
+  color: green;
+}
+
+.task-priority-buttons .low-selected {
+  border: none;
+  color: white;
   background-color: green;
 }
 

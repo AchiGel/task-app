@@ -8,6 +8,7 @@ function App() {
   const [modalType, setModalType] = useState<string>("");
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [taskText, setTaskText] = useState<string>("");
+  const [prioritySelected, setPrioritySelected] = useState<string>("");
   const [taskProps, setTaskProps] = useState<any>([]);
 
   function handleTaskText(e: any) {
@@ -15,9 +16,17 @@ function App() {
     setTaskText(taskText);
   }
 
+  function handlePrioritySelect(e: any) {
+    const priority = e.target.textContent;
+    setPrioritySelected(priority);
+  }
+
   function getTaskProps() {
     const updatedTask = [...taskProps];
-    setTaskProps([...updatedTask, { text: taskText }]);
+    setTaskProps([
+      ...updatedTask,
+      { text: taskText, priority: prioritySelected },
+    ]);
   }
 
   function openModal(event: MouseEvent<HTMLButtonElement>) {
@@ -33,6 +42,8 @@ function App() {
 
   function closeModal() {
     setModalShow(false);
+    setTaskText("");
+    setPrioritySelected("");
   }
 
   return (
@@ -43,6 +54,7 @@ function App() {
           modalType={modalType}
           taskText={taskText}
           handleTaskText={handleTaskText}
+          handlePrioritySelect={handlePrioritySelect}
           getTaskProps={getTaskProps}
         />
       ) : null}
