@@ -16,6 +16,7 @@ function Modal({
   handlePrioritySelect: Function;
 }) {
   const [selected, setSelected] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   function handleSelect(e: any) {
     if (e.currentTarget.textContent === "High") {
@@ -42,7 +43,14 @@ function Modal({
               type="text"
               placeholder="Type your task here..."
               value={taskText}
-              onChange={(e) => handleTaskText(e)}
+              onChange={(e) => {
+                handleTaskText(e);
+                if (e.target.value) {
+                  setIsButtonDisabled(false);
+                } else {
+                  setIsButtonDisabled(true);
+                }
+              }}
             />
           </div>
           <div className="modal-task-priority">
@@ -83,6 +91,7 @@ function Modal({
               getTaskProps();
               closeModal();
             }}
+            disabled={isButtonDisabled}
           >
             Add
           </button>

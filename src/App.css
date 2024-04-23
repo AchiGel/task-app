@@ -36,6 +36,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+button {
+  font-family: "Poppins", sans-serif;
+}
+
 .tasks {
   display: flex;
   flex-direction: column;
@@ -148,11 +152,12 @@ body {
 }
 
 .task-priority-buttons button {
-  padding: 10px 20px;
+  padding: 10px 0px;
   border-radius: 10px;
   border: none;
   outline: none;
   cursor: pointer;
+  width: 90px;
 }
 
 .task-priority-buttons .high {
