@@ -4,13 +4,11 @@ import "react-circular-progressbar/dist/styles.css";
 function Tasks({
   openModal,
   taskProps,
-  progress,
   handleProgressBar,
   handleProgress,
 }: {
   openModal: Function;
   taskProps: any;
-  progress: string;
   handleProgressBar: Function;
   handleProgress: Function;
 }) {
@@ -26,21 +24,29 @@ function Tasks({
   return (
     <ul className="tasks">
       {taskProps.map(
-        (task: { text: string; priority: string }, index: number) => (
-          <li key={index} className="task-card">
+        (task: {
+          text: string;
+          priority: string;
+          id: number;
+          progress: string;
+        }) => (
+          <li key={task.id} className="task-card">
             <div className="task-name">
               <span>Task</span>
               <h3>{task.text}</h3>
             </div>
             <div className="task-priority">
               <span>Priority</span>
-              <h3 className={fontColor(task)}>{task.priority}</h3>
+              <h3 className={fontColor(task)}>{task.priority || "Low"}</h3>
             </div>
-            <button onClick={() => handleProgress()} className="task-progress">
-              {progress}
+            <button
+              onClick={() => handleProgress(task.id)}
+              className="task-progress"
+            >
+              {task.progress}
             </button>
             <div className="task-progress-circle">
-              <CircularProgressbar value={handleProgressBar()} />
+              <CircularProgressbar value={handleProgressBar(task.progress)} />
             </div>
             <button
               className="task-edit"

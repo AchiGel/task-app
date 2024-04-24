@@ -10,17 +10,23 @@ function App() {
   const [taskText, setTaskText] = useState<string>("");
   const [prioritySelected, setPrioritySelected] = useState<string>("Low");
   const [taskProps, setTaskProps] = useState<any>([]);
-  const [progress, setProgress] = useState<string>("To Do");
 
-  function handleProgress() {
-    if (progress === "To Do") {
-      setProgress("In Progress");
-    } else if (progress === "In Progress") {
-      setProgress("Done");
-    }
+  function handleProgress(taskId: string) {
+    setTaskProps((prevTasks: any) => {
+      return prevTasks.map((task: any) => {
+        if (task.id === taskId) {
+          if (task.progress === "To Do") {
+            return { ...task, progress: "In Progress" };
+          } else if (task.progress === "In Progress") {
+            return { ...task, progress: "Done" };
+          }
+        }
+        return task;
+      });
+    });
   }
 
-  function handleProgressBar() {
+  function handleProgressBar(progress: string) {
     if (progress === "To Do") {
       return 0;
     } else if (progress === "In Progress") {
@@ -31,8 +37,12 @@ function App() {
   }
 
   function handleTaskText(e: any) {
-    const taskText = e.target.value;
-    setTaskText(taskText);
+    const value = e.target.value;
+    if (value.trim() !== " ") {
+      setTaskText(value);
+    } else {
+      return;
+    }
   }
 
   function handlePrioritySelect(e: any) {
@@ -44,7 +54,12 @@ function App() {
     const updatedTask = [...taskProps];
     setTaskProps([
       ...updatedTask,
-      { text: taskText, priority: prioritySelected },
+      {
+        id: `${Math.floor(Math.random() * 10000)}`,
+        text: taskText,
+        priority: prioritySelected,
+        progress: "To Do",
+      },
     ]);
   }
 
@@ -81,7 +96,6 @@ function App() {
       <Tasks
         handleProgress={handleProgress}
         handleProgressBar={handleProgressBar}
-        progress={progress}
         openModal={openModal}
         taskProps={taskProps}
       />

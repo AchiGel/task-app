@@ -45,7 +45,7 @@ function Modal({
               value={taskText}
               onChange={(e) => {
                 handleTaskText(e);
-                if (e.target.value) {
+                if (e.target.value.trim() !== "") {
                   setIsButtonDisabled(false);
                 } else {
                   setIsButtonDisabled(true);
