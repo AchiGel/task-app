@@ -17,6 +17,10 @@
   margin-bottom: 50px;
 }
 
+.header h1 {
+  color: #607d8b;
+}
+
 .header button {
   border: none;
   outline: none;
@@ -252,4 +256,31 @@ button {
   outline: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    padding: 50px 10%;
+  }
+
+  .header h1 {
+    font-size: 25px;
+  }
+
+  .header button {
+    padding: 5px 10px;
+  }
+
+  .modal {
+    padding: 40px 40px;
+    width: 80%;
+  }
+
+  .tasks .task-card {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+  }
 }

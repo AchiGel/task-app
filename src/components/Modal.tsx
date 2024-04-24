@@ -8,6 +8,7 @@ function Modal({
   getTaskProps,
   handlePrioritySelect,
   deleteTask,
+  editTask,
   taskId,
 }: {
   closeModal: Function;
@@ -17,6 +18,7 @@ function Modal({
   getTaskProps: Function;
   handlePrioritySelect: Function;
   deleteTask: Function;
+  editTask: Function;
   taskId: string;
 }) {
   const [selected, setSelected] = useState("");
@@ -145,7 +147,15 @@ function Modal({
                 <button>Low</button>
               </div>
             </div>
-            <button className="modal-add-task">Edit</button>
+            <button
+              onClick={() => {
+                editTask(taskId);
+                closeModal();
+              }}
+              className="modal-add-task"
+            >
+              Edit
+            </button>
           </>
         )}
       </div>

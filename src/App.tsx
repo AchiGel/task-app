@@ -67,10 +67,9 @@ function App() {
   function openModal(event: MouseEvent<HTMLButtonElement>, taskId: string) {
     if (event.currentTarget.className === "task-edit") {
       setModalType("editModal");
-      console.log(taskId);
+      setTaskId(taskId);
     } else if (event.currentTarget.className === "task-delete") {
       setModalType("deleteModal");
-      console.log(taskId);
       setTaskId(taskId);
     } else {
       setModalType("addModal");
@@ -82,6 +81,10 @@ function App() {
     setTaskProps((prevTasks: any) => {
       return prevTasks.filter((task: any) => task.id !== taskId);
     });
+  }
+
+  function editTask(taskId: string) {
+    console.log(taskId);
   }
 
   function closeModal() {
@@ -101,6 +104,7 @@ function App() {
           handlePrioritySelect={handlePrioritySelect}
           getTaskProps={getTaskProps}
           deleteTask={deleteTask}
+          editTask={editTask}
           taskId={taskId}
         />
       ) : null}
