@@ -10,6 +10,7 @@ function App() {
   const [taskText, setTaskText] = useState<string>("");
   const [prioritySelected, setPrioritySelected] = useState<string>("Low");
   const [taskProps, setTaskProps] = useState<any>([]);
+  const [taskId, setTaskId] = useState<string>("");
 
   function handleProgress(taskId: string) {
     setTaskProps((prevTasks: any) => {
@@ -63,15 +64,24 @@ function App() {
     ]);
   }
 
-  function openModal(event: MouseEvent<HTMLButtonElement>) {
+  function openModal(event: MouseEvent<HTMLButtonElement>, taskId: string) {
     if (event.currentTarget.className === "task-edit") {
       setModalType("editModal");
+      console.log(taskId);
     } else if (event.currentTarget.className === "task-delete") {
       setModalType("deleteModal");
+      console.log(taskId);
+      setTaskId(taskId);
     } else {
       setModalType("addModal");
     }
     setModalShow(true);
+  }
+
+  function deleteTask(taskId: string) {
+    setTaskProps((prevTasks: any) => {
+      return prevTasks.filter((task: any) => task.id !== taskId);
+    });
   }
 
   function closeModal() {
@@ -90,6 +100,8 @@ function App() {
           handleTaskText={handleTaskText}
           handlePrioritySelect={handlePrioritySelect}
           getTaskProps={getTaskProps}
+          deleteTask={deleteTask}
+          taskId={taskId}
         />
       ) : null}
       <Header openModal={openModal} />

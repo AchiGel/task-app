@@ -50,11 +50,11 @@ function Tasks({
             </div>
             <button
               className="task-edit"
-              onClick={(event) => openModal(event)}
+              onClick={(event) => openModal(event, task.id)}
             ></button>
             <button
               className="task-delete"
-              onClick={(event) => openModal(event)}
+              onClick={(event) => openModal(event, task.id)}
             ></button>
           </li>
         )

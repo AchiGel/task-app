@@ -7,6 +7,8 @@ function Modal({
   handleTaskText,
   getTaskProps,
   handlePrioritySelect,
+  deleteTask,
+  taskId,
 }: {
   closeModal: Function;
   modalType: string;
@@ -14,6 +16,8 @@ function Modal({
   handleTaskText: Function;
   getTaskProps: Function;
   handlePrioritySelect: Function;
+  deleteTask: Function;
+  taskId: string;
 }) {
   const [selected, setSelected] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -109,7 +113,15 @@ function Modal({
               <button onClick={() => closeModal()}>X</button>
             </div>
 
-            <button className="modal-add-task">Delete</button>
+            <button
+              onClick={() => {
+                deleteTask(taskId);
+                closeModal();
+              }}
+              className="modal-add-task"
+            >
+              Delete
+            </button>
           </>
         ) : (
           <>
