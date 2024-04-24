@@ -76,6 +76,23 @@ button {
   font-weight: 700;
 }
 
+.task-progress {
+  background: hsla(217, 9%, 53%, 0.14);
+  border: none;
+  border-radius: 8px;
+  color: #7d8592;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  outline: none;
+  padding: 7px 14px;
+}
+
+.task-progress-circle {
+  width: 24px;
+  height: 24px;
+}
+
 .high-proproty-color {
   color: red;
 }
@@ -194,12 +211,21 @@ button {
 }
 
 .modal-add-task {
-  padding: 10px 20px;
-  border-radius: 10px;
+  background: #713fff;
   border: none;
-  outline: none;
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(113, 63, 255, 0.25);
+  color: #fff;
   cursor: pointer;
-  background-color: rgb(53, 114, 53);
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  padding: 13px 30px;
+}
+
+.modal-add-task:disabled {
+  background-color: #7d8592;
+  cursor: not-allowed;
 }
 
 .task-delete {

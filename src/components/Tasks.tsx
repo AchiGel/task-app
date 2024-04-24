@@ -1,9 +1,18 @@
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+
 function Tasks({
   openModal,
   taskProps,
+  progress,
+  handleProgressBar,
+  handleProgress,
 }: {
   openModal: Function;
   taskProps: any;
+  progress: string;
+  handleProgressBar: Function;
+  handleProgress: Function;
 }) {
   function fontColor(task: any) {
     if (task.priority === "High") {
@@ -27,8 +36,12 @@ function Tasks({
               <span>Priority</span>
               <h3 className={fontColor(task)}>{task.priority}</h3>
             </div>
-            <button className="task-progress">To do</button>
-            <div className="task-progress-circle">O</div>
+            <button onClick={() => handleProgress()} className="task-progress">
+              {progress}
+            </button>
+            <div className="task-progress-circle">
+              <CircularProgressbar value={handleProgressBar()} />
+            </div>
             <button
               className="task-edit"
               onClick={(event) => openModal(event)}

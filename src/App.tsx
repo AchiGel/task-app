@@ -8,8 +8,27 @@ function App() {
   const [modalType, setModalType] = useState<string>("");
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [taskText, setTaskText] = useState<string>("");
-  const [prioritySelected, setPrioritySelected] = useState<string>("");
+  const [prioritySelected, setPrioritySelected] = useState<string>("Low");
   const [taskProps, setTaskProps] = useState<any>([]);
+  const [progress, setProgress] = useState<string>("To Do");
+
+  function handleProgress() {
+    if (progress === "To Do") {
+      setProgress("In Progress");
+    } else if (progress === "In Progress") {
+      setProgress("Done");
+    }
+  }
+
+  function handleProgressBar() {
+    if (progress === "To Do") {
+      return 0;
+    } else if (progress === "In Progress") {
+      return 50;
+    } else {
+      return 100;
+    }
+  }
 
   function handleTaskText(e: any) {
     const taskText = e.target.value;
@@ -59,7 +78,13 @@ function App() {
         />
       ) : null}
       <Header openModal={openModal} />
-      <Tasks openModal={openModal} taskProps={taskProps} />
+      <Tasks
+        handleProgress={handleProgress}
+        handleProgressBar={handleProgressBar}
+        progress={progress}
+        openModal={openModal}
+        taskProps={taskProps}
+      />
     </div>
   );
 }
