@@ -11,6 +11,7 @@ function App() {
   const [prioritySelected, setPrioritySelected] = useState<string>("Low");
   const [taskProps, setTaskProps] = useState<any>([]);
   const [taskId, setTaskId] = useState<string>("");
+  const [editedText, setEditedText] = useState<string>("");
 
   function handleProgress(taskId: string) {
     setTaskProps((prevTasks: any) => {
@@ -84,7 +85,20 @@ function App() {
   }
 
   function editTask(taskId: string) {
-    console.log(taskId);
+    const index = taskProps.findIndex((task: any) => task.id === taskId);
+    if (index !== -1) {
+      const updatedTaskProps = [...taskProps];
+      updatedTaskProps[index] = {
+        ...updatedTaskProps[index],
+        text: editedText,
+        priority: prioritySelected,
+        progress: "To Do",
+      };
+      setTaskProps(updatedTaskProps);
+      setEditedText("");
+    } else {
+      console.error(`Task with ID ${taskId} not found.`);
+    }
   }
 
   function closeModal() {
@@ -106,6 +120,8 @@ function App() {
           deleteTask={deleteTask}
           editTask={editTask}
           taskId={taskId}
+          editedText={editedText}
+          setEditedText={setEditedText}
         />
       ) : null}
       <Header openModal={openModal} />

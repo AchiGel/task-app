@@ -10,6 +10,8 @@ function Modal({
   deleteTask,
   editTask,
   taskId,
+  editedText,
+  setEditedText,
 }: {
   closeModal: Function;
   modalType: string;
@@ -20,6 +22,8 @@ function Modal({
   deleteTask: Function;
   editTask: Function;
   taskId: string;
+  editedText: string;
+  setEditedText: Function;
 }) {
   const [selected, setSelected] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -137,14 +141,44 @@ function Modal({
                 id="task"
                 type="text"
                 placeholder="Type your task here..."
+                value={editedText}
+                onChange={(e) => {
+                  setEditedText(e.target.value);
+                }}
               />
             </div>
             <div className="modal-task-priority">
               <span>Priority</span>
               <div className="task-priority-buttons">
-                <button>High</button>
-                <button>Medium</button>
-                <button>Low</button>
+                <button
+                  onClick={(e) => {
+                    handleSelect(e);
+                    handlePrioritySelect(e);
+                  }}
+                  className={selected === "high" ? "high-selected" : "high"}
+                >
+                  High
+                </button>
+                <button
+                  onClick={(e) => {
+                    handleSelect(e);
+                    handlePrioritySelect(e);
+                  }}
+                  className={
+                    selected === "medium" ? "medium-selected" : "medium"
+                  }
+                >
+                  Medium
+                </button>
+                <button
+                  onClick={(e) => {
+                    handleSelect(e);
+                    handlePrioritySelect(e);
+                  }}
+                  className={selected === "low" ? "low-selected" : "low"}
+                >
+                  Low
+                </button>
               </div>
             </div>
             <button
